@@ -71,7 +71,7 @@ const TimerComponent = React.forwardRef<any, TimerProps>((props, ref) => {
       const times = iSeconds % 3600;
       initTime(times);
     } else {
-      if (iSeconds >= 60) {
+      if (iSeconds >= 59) {
         minute.current = ~~(iSeconds / 60);
         const times = iSeconds % 60;
         initTime(times);
@@ -162,7 +162,7 @@ const TimerComponent = React.forwardRef<any, TimerProps>((props, ref) => {
     if (formatTime === 'hh:mm:ss') {
       if (hours.current > 0) {
         return (
-          <Text style={[styles.text, textStyle, font()]}>{`${hours.current}:${
+          <Text style={[styles.text, textStyle, font()]}>{`0${hours.current}:${
             minute.current.toString().length === 1 ? '0' : ''
           }${minute.current}:${
             seconds.current.toString().length === 1 ? '0' : ''
@@ -171,9 +171,9 @@ const TimerComponent = React.forwardRef<any, TimerProps>((props, ref) => {
       } else {
         if (minute.current > 0) {
           return (
-            <Text style={[styles.text, textStyle, font()]}>{`${
-              minute.current
-            }:${seconds.current.toString().length === 1 ? '0' : ''}${
+            <Text style={[styles.text, textStyle, font()]}>{`00:${
+              minute.current.toString().length === 1 ? '0' : ''
+            }${minute.current}:${seconds.current.toString().length === 1 ? '0' : ''}${
               seconds.current
             }`}</Text>
           );
@@ -181,7 +181,9 @@ const TimerComponent = React.forwardRef<any, TimerProps>((props, ref) => {
           return (
             <Text
               style={[styles.text, textStyle, font()]}
-            >{`${seconds.current}`}</Text>
+            >{`00:00:${seconds.current.toString().length === 1 ? '0' : ''}${
+              seconds.current
+            }`}</Text>
           );
         }
       }
