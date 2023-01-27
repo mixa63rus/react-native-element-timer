@@ -160,33 +160,15 @@ const TimerComponent = React.forwardRef<any, TimerProps>((props, ref) => {
 
   const renderTimer = () => {
     if (formatTime === 'hh:mm:ss') {
-      if (hours.current > 0) {
-        return (
-          <Text style={[styles.text, textStyle, font()]}>{`0${hours.current}:${
-            minute.current.toString().length === 1 ? '0' : ''
-          }${minute.current}:${
-            seconds.current.toString().length === 1 ? '0' : ''
-          }${seconds.current}`}</Text>
-        );
-      } else {
-        if (minute.current > 0) {
-          return (
-            <Text style={[styles.text, textStyle, font()]}>{`00:${
-              minute.current.toString().length === 1 ? '0' : ''
-            }${minute.current}:${seconds.current.toString().length === 1 ? '0' : ''}${
-              seconds.current
-            }`}</Text>
-          );
-        } else {
-          return (
-            <Text
-              style={[styles.text, textStyle, font()]}
-            >{`00:00:${seconds.current.toString().length === 1 ? '0' : ''}${
-              seconds.current
-            }`}</Text>
-          );
-        }
-      }
+      return (
+        <Text style={[styles.text, textStyle, font()]}>{`${
+          hours.current.toString().length === 1 ? '0' : ''
+        }${hours.current}:${
+          minute.current.toString().length === 1 ? '0' : ''
+        }${minute.current}:${
+          seconds.current.toString().length === 1 ? '0' : ''
+        }${seconds.current}`}</Text>
+      );
     } else {
       return (
         <Text
