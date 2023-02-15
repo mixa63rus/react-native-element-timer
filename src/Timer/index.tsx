@@ -48,7 +48,7 @@ const TimerComponent = React.forwardRef<any, TimerProps>((props, ref) => {
   const timer = useCallback(() => {
     interval.current = BackgroundTimer.setInterval(() => {
       currentSeconds.current = currentSeconds.current + 1;
-      if (seconds.current < 60) {
+      if (seconds.current < 59) {
         seconds.current = seconds.current + 1;
       } else {
         seconds.current = 0;
@@ -71,7 +71,7 @@ const TimerComponent = React.forwardRef<any, TimerProps>((props, ref) => {
       const times = iSeconds % 3600;
       initTime(times);
     } else {
-      if (iSeconds >= 59) {
+      if (iSeconds >= 60) {
         minute.current = ~~(iSeconds / 60);
         const times = iSeconds % 60;
         initTime(times);
